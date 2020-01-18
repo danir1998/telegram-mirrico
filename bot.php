@@ -17,7 +17,7 @@ try {
 
 
         //$answer = $message->getChat()->getMessage();
-        $bot->sendMessage($message->getChat()->getId(), "тест", false, null, null, $keyboard);
+        $bot->sendMessage($message->getChat()->getId(), "тест", false, false, null, null, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
