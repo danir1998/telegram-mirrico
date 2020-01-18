@@ -24,23 +24,17 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
-    // Отлов любых сообщений + обрабтка reply-кнопок
 $bot->on(function($Update) use ($bot){
-    
     $message = $Update->getMessage();
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
     
-    if(mb_stripos($mtext,"Сиськи") !== false){
-        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
-
-        $bot->sendPhoto($message->getChat()->getId(), $pic);
+    if($mtext == "+"){
+        $bot->sendMessage($message->getChat()->getId(), "-");
     }
-    if(mb_stripos($mtext,"власть советам") !== false){
-        $bot->sendMessage($message->getChat()->getId(), "Смерть богатым!");
-    }
+    
 }, function($message) use ($name){
-    return true; // когда тут true - команда проходит
+    return true; 
 });
 
 
