@@ -16,7 +16,7 @@ try {
             ], true);
 
 
-        $answer = json_encode($message, 1);
+        $answer = json_encode($message->getChat()->getId(), 1);
         $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
