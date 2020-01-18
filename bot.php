@@ -14,7 +14,7 @@ try {
 
     $bot->command('start', function ($message, $keyboard) use ($bot) {
         $answer = 'Добро пожаловать! Ильдар';
-        $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+        $bot->sendMessage($message->getChat()->getId(), $answer, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
