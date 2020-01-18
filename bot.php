@@ -13,9 +13,10 @@ try {
                 ['4', '5', '6'],
                 ['1', '2', '3'],
                 [     '0'     ]
-            ]
-        , true); // true for one-time keyboard
-        $answer = json_encode($message->getChat());
+            ], true);
+
+
+        $answer = json_encode($message);
         $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
