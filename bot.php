@@ -16,7 +16,7 @@ try {
             ], true);
 
 
-        $answer = $message->getChat()-getMessage();
+        $answer = $message->getChat()->getMessage();
         $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
