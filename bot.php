@@ -5,17 +5,23 @@ require_once("vendor/autoload.php");
 
 try {
     $bot = new \TelegramBot\Api\Client('1011193242:AAFhi5OqpF92E3YC3j8KwIcCOh7k-HyF5yY');
-    // or initialize with botan.io tracker api key
-    // $bot = new \TelegramBot\Api\Client('YOUR_BOT_API_TOKEN', 'YOUR_BOTAN_TRACKER_API_KEY');
 
-    $bot->command('start', function ($message) use ($bot) {
+    $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(
+        [
+            ["one", "two", "three"]
+        ], true); // true for one-time keyboard
+
+
+    $bot->command('start', function ($message, $keyboard) use ($bot) {
         $answer = 'Добро пожаловать! Ильдар';
-        $bot->sendMessage($message->getChat()->getId(), $answer);
+        $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
+
+
 
     $bot->run();
 
