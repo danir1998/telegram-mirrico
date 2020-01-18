@@ -11,8 +11,6 @@ try {
 
     $bot->command('start', function ($message) use ($bot) {
         $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
-
-
         $answer = 'Добро пожаловать! Ильдар';
         $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
@@ -28,7 +26,7 @@ try {
 
 } catch (\TelegramBot\Api\Exception $e) {
     $exe = $e->getMessage();
-    //file_put_contents('text.txt', $exe);
+    file_put_contents('text.txt', $exe);
 }
 
 
