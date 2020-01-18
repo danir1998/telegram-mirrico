@@ -16,8 +16,8 @@ try {
             ], true);
 
 
-        $answer = json_encode($message->getChat()->getId(), 1);
-        $bot->sendMessage($message->getChat()->getText(), $answer, null, false, null, $keyboard);
+        $answer = json_encode($message->getChat(), 1);
+        $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
