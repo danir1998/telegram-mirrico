@@ -9,7 +9,7 @@ try {
     // $bot = new \TelegramBot\Api\Client('YOUR_BOT_API_TOKEN', 'YOUR_BOTAN_TRACKER_API_KEY');
 
     $bot->command('start', function ($message) use ($bot) {
-        $answer = 'Добро пожаловать!';
+        $answer = 'Добро пожаловать! Ильдар';
         $bot->sendMessage($message->getChat()->getId(), $answer);
     });
 
