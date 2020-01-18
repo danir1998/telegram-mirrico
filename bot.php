@@ -29,7 +29,7 @@ $bot->on(function($Update) use ($bot){
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
     
-    if($mtext == "+"){
+    if($mtext == "Сиськи"){
         $bot->sendMessage($message->getChat()->getId(), "-");
     }
     
