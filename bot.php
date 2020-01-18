@@ -24,18 +24,16 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
-    $bot->on(function($update2) use ($bot){
-
-                $message2 = $update2->getMessage();
-                $mtext = $message2->getText();
-                $cid = $message2->getChat()->getId();
-
-                if(mb_stripos($mtext,"власть советам") !== false){
-                    $bot->sendMessage($message2->getChat()->getId(), "Смерть богатым!");
-                }
-
-    }, function($message2) use ($bot){
-            return true; // когда тут true - команда проходит
+    $bot->on(function($Update) use ($bot){
+        $message = $Update->getMessage();
+        $mtext = $message->getText();
+        $cid = $message->getChat()->getId();
+    
+        if(mb_stripos($mtext,"власть советам") !== false){
+            $bot->sendMessage($message->getChat()->getId(), "Смерть богатым!");
+        }
+    }, function($message) use ($name){
+        return true; // когда тут true - команда проходит
     });
 
 
