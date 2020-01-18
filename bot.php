@@ -10,14 +10,11 @@ try {
 
 
     $bot->command('start', function ($message) use ($bot) {
-        $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(
-            [
-                ["one", "two", "three"]
-            ], true
-        ); // true for one-time keyboard
-        
+        $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
+
+
         $answer = 'Добро пожаловать! Ильдар';
-        $bot->sendMessage($message->getChat()->getId(), $answer, $keyboard);
+        $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
