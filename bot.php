@@ -12,7 +12,7 @@ try {
                 ['7', '8', '9'],
                 ['4', '5', '6'],
                 ['1', '2', '3'],
-                [     '0 👋'   ]
+                [     'Сиськи 👋'   ]
             ], true);
 
 
@@ -29,7 +29,7 @@ $bot->on(function($Update) use ($bot){
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
     
-    if($mtext == "Сиськи"){
+    if($mtext == "Сиськи 👋"){
         //$bot->sendMessage($message->getChat()->getId(), "-");
         $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
         $bot->sendPhoto($message->getChat()->getId(), $pic);
