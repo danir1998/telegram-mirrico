@@ -30,7 +30,9 @@ $bot->on(function($Update) use ($bot){
     $cid = $message->getChat()->getId();
     
     if($mtext == "Сиськи"){
-        $bot->sendMessage($message->getChat()->getId(), "-");
+        //$bot->sendMessage($message->getChat()->getId(), "-");
+        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
+        $bot->sendPhoto($message->getChat()->getId(), $pic);
     }
     
 }, function($message) use ($name){
