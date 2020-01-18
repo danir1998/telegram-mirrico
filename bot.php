@@ -13,11 +13,11 @@ try {
                 ['4', '5', '6'],
                 ['1', '2', '3'],
                 [     'Сиськи 👋'   ]
-            ], true);
+            ], true, true);
 
 
-        $answer = $message->getChat()->getMessage();
-        $bot->sendMessage($message->getChat()->getId(), $answer, null, false, null, $keyboard);
+        //$answer = $message->getChat()->getMessage();
+        $bot->sendMessage($message->getChat()->getId(), "тест", false, null, null, $keyboard);
     });
 
     $bot->command('ping', function ($message) use ($bot) {
