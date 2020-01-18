@@ -9,7 +9,7 @@ try {
     $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(
         [
             ["one", "two", "three"]
-        ], true); // true for one-time keyboard
+        ], false); // true for one-time keyboard
 
 
     $bot->command('start', function ($message, $keyboard) use ($bot) {
