@@ -40,6 +40,7 @@ try {
     $bot->on(function($update) use ($bot, $callback_loc, $find_command){
         $callback = $update->getCallbackQuery();
         $message = $callback->getMessage();
+        $mtext = $message->getText();
         $chatId = $message->getChat()->getId();
         $data = $callback->getData();
 
@@ -50,7 +51,7 @@ try {
             $bot->sendMessage($chatId, "Это ответ!");
             $bot->answerCallbackQuery($callback->getId()); // можно отослать пустое, чтобы просто убрать "часики" на кнопке
         }
-        if($message == "Сиськи 👋"){
+        if($mtext == "Сиськи 👋"){
             $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
             $bot->sendPhoto($message->getChat()->getId(), $pic);
         }
