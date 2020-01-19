@@ -40,7 +40,7 @@ try {
     $bot->on(function($update) use ($bot, $callback_loc, $find_command){
         $callback = $update->getCallbackQuery();
         $message = $callback->getMessage();
-        $mtext = $message->getText();
+        $mtext = $update->getMessage()->getText();
         $chatId = $message->getChat()->getId();
         $data = $callback->getData();
 
@@ -53,7 +53,7 @@ try {
         }
         if($mtext == "Сиськи 👋"){
             $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
-            $bot->sendPhoto($message->getChat()->getId(), $pic);
+            $bot->sendPhoto($update->getChat()->getMessage()->getId(), $pic);
         }
 
     }, function($update){
