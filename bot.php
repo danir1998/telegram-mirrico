@@ -36,7 +36,7 @@ try {
         $bot->sendMessage($message->getChat()->getId(), "тест", false, null,null,$keyboard);
     });
 
-$bot->on(function($Update) use ($bot, $callback_loc, $find_command){
+$bot->on(function($Update) use ($bot){
     $message = $Update->getMessage();
     $callback = $Update->getCallbackQuery();
     $mtext = $message->getText();
