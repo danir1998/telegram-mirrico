@@ -54,9 +54,9 @@ $bot->on(function($Update) use ($bot, $callback_loc, $find_command){
     }
     
 }, function($update){
-    $callback = $update->getCallbackQuery();
-    if (is_null($callback) || !strlen($callback->getData()))
-        return false;
+//    $callback = $update->getCallbackQuery();
+//    if (is_null($callback) || !strlen($callback->getData()))
+//        return false;
     return true; 
 });
 
