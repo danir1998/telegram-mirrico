@@ -16,6 +16,7 @@ try {
             ], true, true);
 
 
+        //$answer = $message->getChat()->getMessage();
         $bot->sendMessage($message->getChat()->getId(), "тест", false, false, null, null, $keyboard);
     });
 
@@ -23,40 +24,18 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
-    $bot->command('reply', function ($message) use ($bot) {
-        $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
-            [
-                [
-                    ['callback_data' => 'data_test', 'text' => 'Answer'],
-                    ['callback_data' => 'data_test2', 'text' => 'ОтветЪ']
-                ]
-            ]
-        );
-
-        $bot->sendMessage($message->getChat()->getId(), "тест", false, null,null,$keyboard);
-    });
-
 $bot->on(function($Update) use ($bot){
     $message = $Update->getMessage();
-    $callback = $Update->getCallbackQuery();
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
-
-    $data = $callback->getData();
-
-    if ($data == "data_test") {
-        $bot->answerCallbackQuery($callback->getId(), "Answer", true);
-    }
     
     if($mtext == "Сиськи 👋"){
-         $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
+        //$bot->sendMessage($message->getChat()->getId(), "-");
+        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
         $bot->sendPhoto($message->getChat()->getId(), $pic);
     }
     
-}, function($update){
-//    $callback = $update->getCallbackQuery();
-//    if (is_null($callback) || !strlen($callback->getData()))
-//        return false;
+}, function($message) use ($name){
     return true; 
 });
 
