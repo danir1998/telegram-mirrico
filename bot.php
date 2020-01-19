@@ -3,6 +3,8 @@ require_once("vendor/autoload.php");
 
 //$bot = new \TelegramBot\Api\BotApi('1011193242:AAFhi5OqpF92E3YC3j8KwIcCOh7k-HyF5yY');
 
+
+
 try {
     $bot = new \TelegramBot\Api\Client('1011193242:AAFhi5OqpF92E3YC3j8KwIcCOh7k-HyF5yY');
 
@@ -24,17 +26,17 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
-    $bot->command("ibutton", function ($message) use ($bot) {
+    $bot->command("job", function ($message) use ($bot) {
         $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
             [
                 [
-                    ['callback_data' => 'data_test', 'text' => 'Answer'],
-                    ['callback_data' => 'data_test2', 'text' => 'ОтветЪ']
+                    ['callback_data' => 'step1', 'text' => 'Розлив'],
+                    ['callback_data' => 'step2', 'text' => 'Дозирование сокатализатора'],
+                    ['callback_data' => 'step3', 'text' => 'Дозирование катализатора'],
                 ]
             ]
         );
-
-        $bot->sendMessage($message->getChat()->getId(), "тест", false, null,null,$keyboard);
+        $bot->sendMessage($message->getChat()->getId(), "Здравствуйте, выберите участок", false, null,null,$keyboard);
     });
 
     $bot->on(function($update) use ($bot, $callback_loc, $find_command){
