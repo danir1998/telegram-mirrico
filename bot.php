@@ -53,8 +53,8 @@ $bot->on(function($Update) use ($bot, $callback_loc, $find_command){
         $bot->sendPhoto($message->getChat()->getId(), $pic);
     }
     
-}, function($message) use ($name){
-    $callback = $message->getCallbackQuery();
+}, function($update){
+    $callback = $update->getCallbackQuery();
     if (is_null($callback) || !strlen($callback->getData()))
         return false;
     return true; 
