@@ -24,20 +24,54 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
-$bot->on(function($Update) use ($bot){
-    $message = $Update->getMessage();
-    $mtext = $message->getText();
-    $cid = $message->getChat()->getId();
-    
-    if($mtext == "Сиськи 👋"){
-        //$bot->sendMessage($message->getChat()->getId(), "-");
-        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
-        $bot->sendPhoto($message->getChat()->getId(), $pic);
-    }
-    
-}, function($message) use ($name){
-    return true; 
-});
+    $bot->command("ibutton", function ($message) use ($bot) {
+        $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
+            [
+                [
+                    ['callback_data' => 'data_test', 'text' => 'Answer'],
+                    ['callback_data' => 'data_test2', 'text' => 'ОтветЪ']
+                ]
+            ]
+        );
+
+        $bot->sendMessage($message->getChat()->getId(), "тест", false, null,null,$keyboard);
+    });
+
+    $bot->on(function($update) use ($bot, $callback_loc, $find_command){
+        $callback = $update->getCallbackQuery();
+        $message = $callback->getMessage();
+        $chatId = $message->getChat()->getId();
+        $data = $callback->getData();
+
+        if($data == "data_test"){
+            $bot->answerCallbackQuery( $callback->getId(), "This is Ansver!",true);
+        }
+        if($data == "data_test2"){
+            $bot->sendMessage($chatId, "Это ответ!");
+            $bot->answerCallbackQuery($callback->getId()); // можно отослать пустое, чтобы просто убрать "часики" на кнопке
+        }
+
+    }, function($update){
+        $callback = $update->getCallbackQuery();
+        if (is_null($callback) || !strlen($callback->getData()))
+            return false;
+        return true;
+    });
+
+//$bot->on(function($Update) use ($bot){
+//    $message = $Update->getMessage();
+//    $mtext = $message->getText();
+//    $cid = $message->getChat()->getId();
+//
+//    if($mtext == "Сиськи 👋"){
+//        //$bot->sendMessage($message->getChat()->getId(), "-");
+//        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
+//        $bot->sendPhoto($message->getChat()->getId(), $pic);
+//    }
+//
+//}, function($message) use ($name){
+//    return true;
+//});
 
 
 
