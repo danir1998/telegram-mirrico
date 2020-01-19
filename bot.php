@@ -23,14 +23,26 @@ try {
         $bot->sendMessage($message->getChat()->getId(), 'pong!');
     });
 
+    $bot->command('reply', function ($message) use ($bot) {
+        $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
+            [
+                [
+                    ['callback_data' => 'data_test', 'text' => 'Answer'],
+                    ['callback_data' => 'data_test2', 'text' => 'ОтветЪ']
+                ]
+            ]
+        );
+
+        $bot->sendMessage($message->getChat()->getId(), "тест", false, null,null,$keyboard);
+    });
+
 $bot->on(function($Update) use ($bot){
     $message = $Update->getMessage();
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
     
     if($mtext == "Сиськи 👋"){
-        //$bot->sendMessage($message->getChat()->getId(), "-");
-        $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
+         $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
         $bot->sendPhoto($message->getChat()->getId(), $pic);
     }
     
