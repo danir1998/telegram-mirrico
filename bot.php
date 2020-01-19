@@ -38,8 +38,15 @@ try {
 
 $bot->on(function($Update) use ($bot){
     $message = $Update->getMessage();
+    $callback = $Update->getCallbackQuery();
     $mtext = $message->getText();
     $cid = $message->getChat()->getId();
+
+    $data = $callback->getData();
+
+    if ($data == "data_test") {
+        $bot->answerCallbackQuery($callback->getId(), "Answer", true);
+    }
     
     if($mtext == "Сиськи 👋"){
          $pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
