@@ -15,7 +15,7 @@ try {
                 ['4', '5', '6'],
                 ['1', '2', '3'],
                 [     'Сиськи 👋'   ]
-            ], true, true);
+            ], false, true);
 
 
         //$answer = $message->getChat()->getMessage();
@@ -39,25 +39,25 @@ try {
         $bot->sendMessage($message->getChat()->getId(), "Здравствуйте, выберите участок", false, null,null,$keyboard);
     });
 
-    $bot->on(function($update) use ($bot, $callback_loc, $find_command){
-        $callback = $update->getCallbackQuery();
-        $message = $callback->getMessage();
-        $chatId = $message->getChat()->getId();
-        $data = $callback->getData();
-
-        if($data == "data_test"){
-            $bot->answerCallbackQuery( $callback->getId(), "This is Ansver!",true);
-        }
-        if($data == "data_test2"){
-            $bot->sendMessage($chatId, "Это ответ!");
-            $bot->answerCallbackQuery($callback->getId()); // можно отослать пустое, чтобы просто убрать "часики" на кнопке
-        }
-    }, function($update){
-        $callback = $update->getCallbackQuery();
-        if (is_null($callback) || !strlen($callback->getData()))
-            return false;
-        return true;
-    });
+//    $bot->on(function($update) use ($bot, $callback_loc, $find_command){
+//        $callback = $update->getCallbackQuery();
+//        $message = $callback->getMessage();
+//        $chatId = $message->getChat()->getId();
+//        $data = $callback->getData();
+//
+//        if($data == "data_test"){
+//            $bot->answerCallbackQuery( $callback->getId(), "This is Ansver!",true);
+//        }
+//        if($data == "data_test2"){
+//            $bot->sendMessage($chatId, "Это ответ!");
+//            $bot->answerCallbackQuery($callback->getId()); // можно отослать пустое, чтобы просто убрать "часики" на кнопке
+//        }
+//    }, function($update){
+//        $callback = $update->getCallbackQuery();
+//        if (is_null($callback) || !strlen($callback->getData()))
+//            return false;
+//        return true;
+//    });
 
     // Отлов любых сообщений + обрабтка reply-кнопок
     $bot->on(function($Update) use ($bot){
@@ -73,6 +73,11 @@ try {
         if(mb_stripos($mtext,"власть советам") !== false){
             $bot->sendMessage($message->getChat()->getId(), "Смерть богатым!");
         }
+
+        if(mb_stripos($mtext,"1") !== false){
+            $bot->sendMessage($message->getChat()->getId(), "Смерть богатым!");
+        }
+
     }, function($message) use ($name){
         return true; // когда тут true - команда проходит
     });
